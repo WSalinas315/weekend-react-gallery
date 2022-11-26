@@ -1,0 +1,8 @@
+.gallery-container{
+  display: flex;
+  margin-top: 10px;
+  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
