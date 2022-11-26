@@ -1,10 +1,31 @@
 img{
   width: 200px;
+  height: 200px;
+  border: solid black;
 }
 
 .gallery-item{
+  display: flex;
+  flex-direction: column;
   border-radius: 6px;
   background-color: rgb(241, 241, 241);
   padding: 15px;
   text-align: center;
+  align-items: center;
+}
+
+.image-description{
+  display: flex;
+  width: 200px;
+  height: 200px;
+  border: solid black;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  background-color: white;
+}
+
+button{
+  width: 100px;
+  background-color: white;
 }
