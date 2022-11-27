@@ -2,7 +2,7 @@
 
 ## Description
 
-This image gallery allows the user to upload images and descriptions to a database and those images are displayed on a webpage. Once an image is loaded the user can either like the image to increment its like counter or delete the image to remove it from the database. This allows the user to display and curate import photographs for all to see.
+This image gallery allows the user to upload images and descriptions to a database and those images are displayed on a webpage. Once an image is loaded the user can either like the image to increment its like counter or delete the image to remove it from the database. They can also click on the image to display the description text or on the text to switch back to the image. This allows the user to display and curate import photographs for all to see.
 
 ## Sample Image
 ![Alt text](public/images/ApplicationExample.png)
