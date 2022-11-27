@@ -1,63 +1,52 @@
-// import axios from 'axios';
-// import {useState} from 'react'
-// import './AddItemForm.css'
+import axios from 'axios';
+import { useState } from 'react'
 
-// function addItemForm(props) {
+export default function GalleryForm(props) {
 
-//     const [item, setItem] = useState('');
-//     const [qty, setQty] = useState('');
-//     const [unit, setUnit] = useState('');
+  const [url, setURL] = useState('');
+  const [description, setDesc] = useState('');
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (url && description) {
+      addGalleryItem();
+    } else {
+      alert('Please complete all fields.');
+    };
+  }
 
-//     const handleSubmit = (event) => {
-//         event.preventDefault();
-//         if (item && qty && unit) {
-//             addItem();
-//         } else {
-//             alert('Complete all fields!');
-//         };
-//     }
+  const addGalleryItem = () => {
+    axios.post('/gallery', { path: url, description: description }).then(response => {
+      console.log('POST successful.');
+      setURL('');
+      setDesc('');
+      props.getGallery();
+    }).catch(error => {
+      alert('Error with POST in GalleryForm.jsx:', error);
+    });
+  };
 
-//     const addItem = () => {
-//         axios.post('/items', {name:item, qty:qty, unit:unit})
-//             .then(response => {
-//                 console.log('in POST');
-//                 setItem('');
-//                 setQty('');
-//                 setUnit('');
-//                 props.getList();
-//             }).catch(err=>{
-//                 alert('error POSTing', err);
-//             });
-//     };
-
-//     return (
-//         <div>
-//             <form onSubmit={handleSubmit}>
-//                 <h2>Add an Item</h2>
-//                 <label >Item: </label>
-//                 <input
-//                     id="itemInput"
-//                     type="text"
-//                     value={item}
-//                     onChange={(event) => setItem(event.target.value)}/>
-//                 <br/>
-//                 <label >Quantity: </label>
-//                 <input 
-//                     id="qtyInput"
-//                     type="number"
-//                     value={qty}
-//                     onChange={(event) => setQty(event.target.value)}/>
-//                 <label >Unit: </label>
-//                 <input 
-//                     id="unitInput"
-//                     type="text"
-//                     value={unit}
-//                     onChange={(event) => setUnit(event.target.value)}/><br/>
-//                 <button type="submit">Save</button>
-//             </form>
-//         </div>
-//     )
-// }
-
-// export default addItemForm;
+  return (
+    <div>
+      <form onSubmit={handleSubmit}>
+        <h2>Add a gallery piece</h2>
+        <div className='submit-form'>
+          <label >URL Path: </label>
+          <input
+            id="urlInput"
+            type="text"
+            value={url}
+            onChange={(event) => setURL(event.target.value)} />
+          <label >Description: </label>
+          <input
+            id="descriptionInput"
+            type="text"
+            value={description}
+            onChange={(event) => setDesc(event.target.value)} />
+        </div>
+        <br />
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  )
+}
