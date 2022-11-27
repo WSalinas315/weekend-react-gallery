@@ -1,6 +1,7 @@
 import './GalleryItem.css'
 import axios from 'axios';
 import { useState } from 'react';
+import Button from '@mui/material/Button';
 
 export default function GalleryItem({ galleryPiece, getGallery }) {
 
@@ -36,9 +37,9 @@ export default function GalleryItem({ galleryPiece, getGallery }) {
         <div className="image-description" onClick={() => { setIsImg(true) }}>{galleryPiece.description}</div>
       }
       <br />
-      <button onClick={upVote} className="gallery-btn">Love it!</button>
+      <Button variant="contained" onClick={upVote} className="gallery-btn">Love it!</Button>
       <br />
-      <button onClick={deletePiece} className="delete-btn">Delete item</button>
+      <Button variant="contained" onClick={deletePiece} className="delete-btn">Delete</Button>
       <p>{galleryPiece.likes} {galleryPiece.likes === 1 ? 'person loves this!' : 'people love this!'}</p>
     </div>
   )

@@ -2,8 +2,6 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../modules/pool.js');
 
-// DO NOT MODIFY THIS FILE FOR BASE MODE
-
 // PUT Route
 router.put('/like/:id', (req, res) => {
     console.log(req.params);
@@ -14,7 +12,7 @@ router.put('/like/:id', (req, res) => {
     }).catch((error) => {
         console.log(`Error with query ${likeQuery}, error is:`, error);
     });
-}); // END PUT Route
+});
 
 // GET Route
 router.get('/', (req, res) => {
